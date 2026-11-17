@@ -12,10 +12,11 @@ Kurser för nyexaminerade .NET-utvecklare om att arbeta med AI-verktyg i modern 
 
 | Del | Tid |
 | --- | --- |
-| Genomgång | 45 min |
-| Labb | 2 h 30 min |
-| Quiz och reflektion | 30 min |
-| Buffert | 15 min |
+| Genomgång (text, läses eller gås igenom) | 2 h |
+| Labb | 1 h 35 min |
+| Quiz och reflektion | 25 min |
+
+Tiderna summerar till 4 timmar utan buffert. Lektion 0 är skriven efter den här ramen. Lektionerna 1 till 6 ska följa samma ram när de skrivs ut.
 
 ## Lektionsplan
 
@@ -49,7 +50,7 @@ Alla påståenden om Claude Code ska gå att kontrollera i den officiella dokume
 ## Status
 
 - Verifierat mot officiell dokumentation den 2026-11-17.
-- Lektion 0 är fullt utskriven.
+- Lektion 0 är fullt utskriven, med en tvåtimmars textgenomgång (13 avsnitt), labb och quiz.
 - Lektionerna 1 till 6 och avslutningen är dispositioner. De är inte utskrivna ännu.
 - Inga slide-filer finns i repot ännu. Slide-outlines finns i varje lektion.
 - Ingen commit är gjord.
