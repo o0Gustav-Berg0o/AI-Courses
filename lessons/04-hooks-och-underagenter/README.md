@@ -94,7 +94,7 @@ I `PreToolUse` kan du i stället returnera JSON med `permissionDecision` som `al
 
 En hook körs deterministiskt när händelsen och matchern stämmer. Modellen avgör inte om den körs. Men två saker bör du känna till:
 
-- Fältet `file_path` som ligger i `tool_input` för `Edit` och `Write` är vårt antagande. Dokumentationen säger att `tool_input` är händelsespecifikt, och att varje händelse dokumenterar sina fält. Kontrollera därför fältnamnet i labbet, genom att skriva stdin till en fil innan du bygger logiken.
+- Fältet `file_path` är den parameter som dokumentationen anger för `Edit` och `Write`, och `tool_input` följer verktygets parametrar. Vi har ändå inte sett fältet i en stdin-utskrift i kursen. Kontrollera därför fältnamnet i labbet, genom att skriva stdin till en fil innan du bygger logiken.
 - En `PreToolUse`-hook som timar ut blockerar inte automatiskt. Dokumentationen varnar: förlita dig inte på en hook som stannar som grind.
 
 Dokumentationen säger också att `@`-referenser i prompten inte passerar genom `PreToolUse`-hooks, eftersom ingen verktygsanropning sker. Om du vill styra vilka filer som läses, använd en `Read`-deny-regel.
@@ -115,9 +115,9 @@ Dokumentationen är tydlig med följande:
 - Allow-regler har ingen effekt i `bypassPermissions`.
 - I auto mode utvärderas allow-, ask- och deny-regler först, före klassificeraren. En deny-regel blockerar därför även där.
 
-Syntaxen för en regel som läser `.env` skrivs `Read(./.env)` i dokumentationens exempel. Kontrollera exakt syntax i `/permissions` i labbet.
+En regel som blockerar läsning av `.env` skrivs `Read(./.env)`, enligt dokumentationens tabell över regelsyntax. Regler utvärderas i ordningen deny, ask och sedan allow, och den första träffen avgör. Ett bart verktygsnamn som `Bash` tar bort verktyget från Claudes kontext helt.
 
-*Källa: [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnitten "Deny rules and precedence" och "Auto mode and the classifier". Syntaxen `Read(./.env)` är kursens exempel. Dokumentationen nämner `Read`-deny-regler, men använder ett annat exempel.*
+*Källa: [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnitten "Deny rules and precedence" och "Auto mode and the classifier". Syntaxen `Read(./.env)` och evalueringsordningen finns i [Configure permissions](https://code.claude.com/docs/en/permissions), under "Rule syntax" och "Deny rules".*
 
 ### 7. Auto mode och hooks
 
@@ -165,7 +165,7 @@ claude --worktree feature-auth
 
 Ett underagentsfält, `isolation: worktree`, kör underagenten i en tillfällig worktree. Den rensas automatiskt om underagenten inte gör några ändringar. Worktrees skapas från din standardgren, inte från din aktuella `HEAD`.
 
-Repot måste ha minst en commit för att ett worktree ska kunna skapas.
+Med `claude --worktree` hamnar worktreen i `<repo>/.claude/worktrees/<namn>`. Repot måste ha minst en commit för att ett worktree ska kunna skapas.
 
 *Källa: [Common workflows](https://code.claude.com/docs/en/common-workflows), avsnittet "Run parallel sessions with worktrees". [Subagents](https://code.claude.com/docs/en/sub-agents), fältet `isolation`.*
 

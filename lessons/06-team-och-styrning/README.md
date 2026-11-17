@@ -52,17 +52,30 @@ Den laddas före användarens och projektets CLAUDE.md. Utvecklare kan exkludera
 
 I ett stort monorepo kan andra teams CLAUDE.md-filer laddas i onödan. Med `claudeMdExcludes` hoppar du över dem. Det används för att hålla kontexten relevant för ditt arbete.
 
-Exkluderingen gäller bara filerna du väljer. Den organisationens managed CLAUDE.md kan du inte exkludera.
+Inställningen tar glob-mönster, och mönstren matchas mot absoluta sökvägar. Dokumentationen visar ett exempel som läggs i `.claude/settings.local.json`, så att undantaget stannar på din dator:
 
-*Källa: [Memory](https://code.claude.com/docs/en/memory), avsnittet "How CLAUDE.md files load" (stycket om monorepos och `claudeMdExcludes`), och avsnittet "Exclude specific CLAUDE.md files".*
+```json
+{
+  "claudeMdExcludes": [
+    "**/monorepo/CLAUDE.md",
+    "/home/user/monorepo/other-team/.claude/rules/**"
+  ]
+}
+```
+
+Inställningen kan ligga i användar-, projekt-, lokal- eller managed-nivå, och listor slås ihop mellan nivåerna. Exkluderingen gäller bara filerna du väljer. Den organisationens managed CLAUDE.md kan du inte exkludera.
+
+*Källa: [Memory](https://code.claude.com/docs/en/memory), avsnittet "How CLAUDE.md files load" (stycket om monorepos), och avsnittet "Exclude specific CLAUDE.md files" (exemplet och mönstren).*
 
 ### 4. Tvingande regler: hooks och deny-regler
 
 Det som ska gälla alltid ska vara tekniskt tillämpat. Det är hooks (lektion 4), deny-regler och managed settings. Dokumentationen säger att deny-regler gäller i alla lägen, även `bypassPermissions`.
 
+Managed settings är en fil, `managed-settings.json`, som ligger i systemmappen: `/Library/Application Support/ClaudeCode/` på macOS, `/etc/claude-code/` på Linux och WSL, och `C:\Program Files\ClaudeCode\` på Windows. Dokumentationen säger att Claude Code tillämpar den ovanför alla andra nivåer, så att användarens, projektets, den lokala eller `--settings`-värden inte åsidosätter den. Det finns några säkerhetskänsliga undantag där ett strängare värde från en lägre nivå fortfarande gäller.
+
 Hooks kan också stängas av. `disableAllHooks` sätter alla hooks ur kraft. `allowManagedHooksOnly` låter bara hooks från managed settings köras. Det är ett sätt för en organisation att säkerställa att det är de egna hooks som gäller.
 
-*Källa: [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnittet "Deny rules and precedence". [Hooks](https://code.claude.com/docs/en/hooks) och [Keep Claude working toward a goal](https://code.claude.com/docs/en/goal), avsnittet "Requirements", för `disableAllHooks` och `allowManagedHooksOnly`.*
+*Källa: [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnittet "Deny rules and precedence". [Deploy managed settings](https://code.claude.com/docs/en/managed-settings) för filplatser och prioritet. [Keep Claude working toward a goal](https://code.claude.com/docs/en/goal), avsnittet "Requirements", för `disableAllHooks` och `allowManagedHooksOnly`.*
 
 ### 5. Auto mode för ett team
 
@@ -74,11 +87,15 @@ Auto mode har en klassificerare som granskar varje åtgärd. Dokumentationen bes
 - `git reset --hard`, `git checkout -- .`, `git clean -fd`,
 - `terraform destroy` och liknande.
 
-Standardregler kan kompletteras. Dokumentationen nämner `autoMode.allow` i inställningarna, och ett kommando, `/auto-mode-setup`, som kan föreslå en konfiguration utifrån projektet och de senaste sessionerna. Du granskar nekanden i `/permissions`.
+Standardregler kan kompletteras med blocket `autoMode` i inställningarna. Det finns fyra listor: `environment`, `allow`, `soft_deny` och `hard_deny`. Listorna är prosa, inte mönster. Du lägger till egna regler genom att ta med strängen `"$defaults"`, så att de inbyggda reglerna finns kvar. Utan `"$defaults"` ersätts hela listan.
+
+Den viktigaste detaljen för ett team: klassificeraren läser `autoMode` från **användarens** inställningar (`~/.claude/settings.json`), från managed settings och från `--settings`. Den läser **inte** `autoMode` från projektets `.claude/settings.json` eller `.claude/settings.local.json`. Skälet är att ett incheckat repo annars kunde lägga in egna tillåtelser. För organisationens betrodda infrastruktur används därför managed settings.
+
+Kommandot `/auto-mode-setup` kan föreslå `environment`-poster utifrån projektet och de senaste sessionerna, och skriver dem till `~/.claude/settings.json`. Med `claude auto-mode config` ser du vad klassificeraren faktiskt använder, och `claude auto-mode critique` ger återkoppling på egna regler. Nekanden granskar du i `/permissions`, under fliken **Recently blocked**.
 
 Dokumentationen säger också: "Auto mode reduces permission prompts but does not guarantee safety." Den är inte ett skyddsnät i sig.
 
-*Källa: [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnitten "Auto mode and the classifier" och "Eliminate prompts with auto mode". [Commands](https://code.claude.com/docs/en/commands), tabellen för `/permissions`. Konfigurationsdetaljerna finns i [Auto mode configuration](https://code.claude.com/docs/en/auto-mode-config), som inte är läst i sin helhet i kursen.*
+*Källa: [Configure auto mode](https://code.claude.com/docs/en/auto-mode-config), avsnitten "Where the classifier reads configuration", "Override the block and allow rules", "Generate environment entries", "Inspect the defaults and your effective config" och "Review denials". [Permission modes](https://code.claude.com/docs/en/permission-modes), avsnittet "Eliminate prompts with auto mode".*
 
 ### 6. Kostnad: var den kommer ifrån
 
@@ -117,11 +134,7 @@ Det här är kursens rekommendation, byggd på dokumentationens delar:
 
 ### 10. Vad som är verifierat och vad som inte är det
 
-Den här lektionen bygger på dokumentationen för CLAUDE.md, hooks, behörigheter, `/usage` och `/goal`. Följande är inte läst i sin helhet, och ska kontrolleras innan kursen ges:
-
-- Managed settings: vilka nycklar som finns och hur de distribueras.
-- Auto mode-konfigurationen (`autoMode`), inklusive `/auto-mode-setup`.
-- Exakta regler för `claudeMdExcludes`-mönster.
+Den här lektionen bygger på dokumentationen för CLAUDE.md, hooks, behörigheter, `/usage`, `/goal`, managed settings, auto mode-konfigurationen och `claudeMdExcludes`. Managed settings, `autoMode` och `claudeMdExcludes` är lästa i den här omgången. Det som fortfarande ska testas är i stället praktiken: att elever kan sätta upp dem i ett riktigt team, och att `claudeMdExcludes` fungerar som labbet antar.
 
 *Källa: [sources.md](../../sources.md). Den här listan uppdateras där underlaget verifierats.*
 
@@ -171,10 +184,10 @@ Labbet kan göras i ett repo som du har. Om du arbetar ensam simulerar du teamet
 ### Steg 3: exkludera en CLAUDE.md (20 min)
 1. Skapa en underkatalog med en egen `CLAUDE.md`, till exempel `src/legacy/CLAUDE.md`, med en instruktion som inte hör till dig.
 2. Be Claude läsa en fil i underkatalogen, och kontrollera med `/context` att filen laddades.
-3. Lägg till `claudeMdExcludes` i projektets inställningar för att exkludera den. Kontrollera syntaxen mot dokumentationen i `/memory`.
+3. Lägg till `claudeMdExcludes` i `.claude/settings.local.json` med en absolut sökväg som glob-mönster, till exempel `"**/src/legacy/CLAUDE.md"`. Mönstret matchas mot absoluta sökvägar.
 4. Be Claude läsa filen igen, och kontrollera.
 
-**Förväntat:** filen laddas inte efter exkluderingen. Anteckna om syntaxen fungerade direkt, eftersom den inte är läst i sin helhet i kursen.
+**Förväntat:** filen laddas inte efter exkluderingen. Anteckna om mönstret matchade direkt, eller om du behövde justera det.
 
 ### Steg 4: tvinga fram en regel (20 min)
 1. Kom ihåg lektion 4: skapa en deny-regel för `Read(./.env)`, eller en hook som blockerar en fil.
@@ -186,7 +199,7 @@ Labbet kan göras i ett repo som du har. Om du arbetar ensam simulerar du teamet
 ### Steg 5: auto mode-nekanden (15 min)
 1. Byt till auto mode med `Shift+Tab`.
 2. Be Claude göra något som klassificeraren sannolikt blockerar, till exempel `run git reset --hard in this repo`. Kör det i kopian.
-3. Öppna `/permissions` och granska nekandena.
+3. Öppna `/permissions`, fliken **Recently blocked**, och granska nekandet.
 
 **Förväntat:** Claude nekas, och nekandet syns i `/permissions`. Anteckna vad som stod i nekandet.
 
@@ -269,5 +282,5 @@ Lektionen är godkänd när eleven:
 
 - **`/usage` visar ingen uppdelning:** uppdelningen gäller bara vissa abonnemang. Anteckna det och använd totalen.
 - **`claudeMdExcludes` har ingen effekt:** syntaxen stämmer inte, eller filen är organisationens managed CLAUDE.md, som inte kan exkluderas.
-- **Auto mode blockerar allt:** klassificeraren nekar efter upprepade försök. Granska nekandena i `/permissions`, och justera med `autoMode.allow` i stället för att stänga av granskningen.
+- **Auto mode pausar och frågar igen:** efter tre nekanden i rad, eller tjugo totalt, pausar auto mode och Claude Code frågar igen. Granska nekandena i `/permissions` under fliken **Recently blocked**. Justera med `autoMode.allow` i användarens inställningar, inte i projektets.
 - **Kostnaden går inte ner:** den största posten är ofta ett långt samtal, inte en enskild fråga. Dela upp med `/clear`.

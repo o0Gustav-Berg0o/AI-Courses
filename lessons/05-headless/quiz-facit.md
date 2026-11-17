@@ -19,4 +19,4 @@
 
 Godkänt vid minst 4 av 5 rätt. Om en elev missar fråga 1 eller 4 är det värt att repetera, eftersom det är kärnan i den här lektionen.
 
-Notera för instruktören: `--max-turns` är inte verifierat i den här lektionens källtext. Kontrollera den mot CLI-referensen innan labbet körs i kursen.
+Notera för instruktören: `--max-turns`, `--max-budget-usd` och `--permission-prompts` är verifierade mot CLI-referensen och headless-dokumentationen.

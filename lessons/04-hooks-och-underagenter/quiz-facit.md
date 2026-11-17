@@ -19,4 +19,4 @@
 
 Godkänt vid minst 4 av 5 rätt. Om en elev missar fråga 2 eller 3 är det värt en genomgång i början av lektion 5, eftersom headless-körningar bygger på samma regelordning.
 
-Notera för instruktören: `file_path`-fältet i `tool_input` för `Edit` och `Write` är kursens antagande. Låt eleverna verifiera det i steg 1.
+Notera för instruktören: `file_path` är den parameter som dokumentationen anger för `Edit` och `Write`, men fältet har inte observerats i stdin i kursen. Låt eleverna verifiera det i steg 1.

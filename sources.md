@@ -35,6 +35,10 @@ Verifierade den 2026-11-17. Alla länkar går till den officiella dokumentatione
 | [Run Claude Code programmatically](https://code.claude.com/docs/en/headless) | Lektion 5, 6 | Läst: `-p`, utdataformat, `--allowedTools`, `--bare`, `--permission-prompts`, `--max-budget-usd`, bakgrundsarbete. |
 | [Common workflows](https://code.claude.com/docs/en/common-workflows) | Lektion 3, 4, 5 | Läst: plan före redigering, worktrees (`--worktree`), schemalagda körningar, `@`-referenser. |
 | [Keep Claude working toward a goal](https://code.claude.com/docs/en/goal) | Lektion 3, 6 | Läst: `/goal`, utvärdering, villkor. Beteendet i en session är ej testat. |
+| [Deploy managed settings](https://code.claude.com/docs/en/managed-settings) | Lektion 6 | Läst: filplatser per OS, prioritet över andra nivåer. |
+| [Configure auto mode](https://code.claude.com/docs/en/auto-mode-config) | Lektion 6 | Läst: `autoMode`-scopes (användare, managed, `--settings`; inte projekt), `$defaults`, `claude auto-mode`-kommandon, `/auto-mode-setup`, Recently blocked. |
+| [Configure permissions](https://code.claude.com/docs/en/permissions) | Lektion 4, 6 | Läst: regelsyntax (`Read(./.env)`), evalueringsordning deny, ask, allow, `file_path` för Edit och Write. |
+| [CLI reference](https://code.claude.com/docs/en/cli-reference) | Lektion 4, 5 | Läst: `--max-turns`, `--max-budget-usd`, `--permission-prompts`, `--bare`, `--worktree`, `--allowedTools`. |
 | [Skills](https://code.claude.com/docs/en/skills) | Lektion 2, 3 | Läst delvis: `/verify` och `/doctor`. Bundlade skills. |
 
 ## Ej verifierat ännu
@@ -42,8 +46,5 @@ Verifierade den 2026-11-17. Alla länkar går till den officiella dokumentatione
 - Beteendet för `/goal`, `/verify` och `/code-review` i en session: dokumentationen är läst, men ingen session har kört dem. Labben i lektion 3 ska ge svaret.
 - Exempel med `dotnet format` och `dotnet build` som hook: vår anpassning, inte från dokumentationen.
 - PowerShell-hookexemplen i lektion 4: vår anpassning. Fältnamnet `file_path` kontrolleras i labbet.
-- Syntaxen `Read(./.env)` för deny-regler: dokumentationen nämner `Read`-deny-regler, men exemplet i lektion 4 är vårt.
-- `--max-turns`: står i CLI-referensen enligt tidigare verifiering, men är inte läst i sin helhet för lektion 5.
-- Managed settings: sidan finns, men innehållet är inte läst i sin helhet för lektion 6.
-- Auto mode-konfigurationen (`autoMode`, `/auto-mode-setup`): läst delvis i permission modes och commands, inte i sin helhet.
-- `claudeMdExcludes`-syntaxen: beskriven i memory, men exempel i lektion 6 är ej testat.
+- Hook-exemplen i lektion 4 och 5 (PowerShell, `block-prod-config.ps1`, `log-stdin.ps1`): vår anpassning. Dokumentationen är läst, men skripten är inte körda.
+- `claudeMdExcludes`-exemplet i lektion 6 är läst i dokumentationen, men inte testat i en session.

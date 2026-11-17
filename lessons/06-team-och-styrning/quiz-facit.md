@@ -19,4 +19,4 @@
 
 Godkänt vid minst 4 av 5 rätt. Om en elev missar fråga 1 eller 2 är det värt att repetera skillnaden mellan styrning som tolkas och styrning som tillämpas.
 
-Notera för instruktören: managed settings, `autoMode`-konfigurationen och `claudeMdExcludes`-syntaxen är inte läst i sin helhet. Ändra facit om något visar sig annorlunda när de verifierats.
+Notera för instruktören: facit bygger på den lästa dokumentationen för managed settings, `autoMode` och `claudeMdExcludes`. Fråga 2 gäller `claudeMdExcludes`, och fråga 1 gäller managed settings och hooks.

@@ -120,11 +120,11 @@ Du kan pipa in innehåll: `cat build-error.txt | claude -p "concisely explain th
 Två flaggor begränsar körningar:
 
 - **`--max-budget-usd`** sätter en kostnadsgräns. Dokumentationen säger att körningen stoppar kvarvarande bakgrundsarbete när gränsen nås.
-- **`--max-turns`** begränsar antalet turer. Den finns i CLI-referensen, enligt kursens källlista. Kontrollera den med `claude --help` i labbet.
+- **`--max-turns`** begränsar antalet agentiska turer i print-läge. Standard är ingen gräns.
 
 Kom ihåg att `total_cost_usd` är en uppskattning. Din faktiska kostnad syns i `/usage` och på kontot.
 
-*Källa: [Run Claude Code programmatically](https://code.claude.com/docs/en/headless), avsnittet "Background tasks at exit" (för `--max-budget-usd`). `--max-turns` står i [CLI reference](https://code.claude.com/docs/en/cli-reference), enligt sources.md.*
+*Källa: [Run Claude Code programmatically](https://code.claude.com/docs/en/headless), avsnittet "Background tasks at exit" (för `--max-budget-usd`). `--max-turns` står i [CLI reference](https://code.claude.com/docs/en/cli-reference).*
 
 ### 11. Schemalagda körningar
 
