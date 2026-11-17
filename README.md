@@ -23,7 +23,7 @@ Tiderna summerar till 4 timmar utan buffert. Lektion 0 är skriven efter den hä
 | Nr | Lektion | Huvudkommandon och koncept | Status |
 | --- | --- | --- | --- |
 | 0 | [Installation och första sessionen](lessons/00-installation/README.md) | `claude`, `claude -p`, `claude -c`, `/context`, `Shift+Tab` | Fullt utskriven |
-| 1 | Kontext, sessioner och kostnad | `/context`, `/compact`, `/clear`, `/rewind`, `/usage` | Disposition, se nedan |
+| 1 | [Kontext, sessioner och kostnad](lessons/01-kontext/README.md) | `/context`, `/compact`, `/clear`, `/rewind`, `/usage` | Fullt utskriven |
 | 2 | CLAUDE.md och minne | `/init`, `/doctor`, `/memory`, `CLAUDE.local.md`, `.claude/rules/` | Disposition, se nedan |
 | 3 | Arbetsflöde och verifiering | plan-läge, `SPEC.md`, `/goal`, `/verify`, `/code-review` | Disposition, se nedan |
 | 4 | Hooks, behörigheter och underagenter | hooks, `permissions.deny`, `.claude/agents/`, `--worktree` | Disposition, se nedan |
@@ -50,8 +50,8 @@ Alla påståenden om Claude Code ska gå att kontrollera i den officiella dokume
 ## Status
 
 - Verifierat mot officiell dokumentation den 2026-11-17.
-- Lektion 0 är fullt utskriven, med en tvåtimmars textgenomgång (13 avsnitt), labb och quiz.
-- Lektionerna 1 till 6 och avslutningen är dispositioner. De är inte utskrivna ännu.
+- Lektion 0 och 1 är fullt utskrivna, var och en med tvåtimmars textgenomgång, labb och quiz.
+- Lektionerna 2 till 6 och avslutningen är dispositioner. De är inte utskrivna ännu.
 - Inga slide-filer finns i repot ännu. Slide-outlines finns i varje lektion.
 - Ingen commit är gjord.
 
@@ -64,5 +64,8 @@ AI kurser/
   lessons/
     00-installation/
       README.md              lektion 0, komplett
+      quiz-facit.md          facit för instruktören
+    01-kontext/
+      README.md              lektion 1, komplett
       quiz-facit.md          facit för instruktören
 ```
