@@ -24,12 +24,12 @@ Tiderna summerar till 4 timmar utan buffert. Lektion 0 är skriven efter den hä
 | --- | --- | --- | --- |
 | 0 | [Installation och första sessionen](lessons/00-installation/README.md) | `claude`, `claude -p`, `claude -c`, `/context`, `Shift+Tab` | Fullt utskriven |
 | 1 | [Kontext, sessioner och kostnad](lessons/01-kontext/README.md) | `/context`, `/compact`, `/clear`, `/rewind`, `/usage` | Fullt utskriven |
-| 2 | CLAUDE.md och minne | `/init`, `/doctor`, `/memory`, `CLAUDE.local.md`, `.claude/rules/` | Disposition, se nedan |
-| 3 | Arbetsflöde och verifiering | plan-läge, `SPEC.md`, `/goal`, `/verify`, `/code-review` | Disposition, se nedan |
-| 4 | Hooks, behörigheter och underagenter | hooks, `permissions.deny`, `.claude/agents/`, `--worktree` | Disposition, se nedan |
-| 5 | Headless och automation | `claude -p`, `--allowedTools`, `--max-turns`, `/loop`, `/schedule` | Disposition, se nedan |
-| 6 | Team, styrning och kostnad | managed settings, `claudeMdExcludes`, `/usage`, auto mode-konfiguration | Disposition, se nedan |
-| A | Avslutande uppgift | En funktion från början till slut | Disposition, se nedan |
+| 2 | [CLAUDE.md och minne](lessons/02-minne/README.md) | `/init`, `/doctor`, `/memory`, `CLAUDE.local.md`, `.claude/rules/` | Fullt utskriven |
+| 3 | [Arbetsflöde och verifiering](lessons/03-arbetsflode/README.md) | plan-läge, `SPEC.md`, `/goal`, `/verify`, `/code-review` | Fullt utskriven |
+| 4 | [Hooks, behörigheter och underagenter](lessons/04-hooks-och-underagenter/README.md) | hooks, `permissions.deny`, `.claude/agents/`, `--worktree` | Fullt utskriven |
+| 5 | [Headless och automation](lessons/05-headless/README.md) | `claude -p`, `--allowedTools`, `--permission-prompts`, `--bare`, `/loop`, `/schedule` | Fullt utskriven |
+| 6 | [Team, styrning och kostnad](lessons/06-team-och-styrning/README.md) | managed CLAUDE.md, `claudeMdExcludes`, `/usage`, auto mode-konfiguration | Fullt utskriven |
+| A | [Avslutande uppgift](lessons/A-slutuppgift/README.md) | En funktion från början till slut | Fullt utskriven |
 
 ## Lektionsmallen
 
@@ -50,10 +50,9 @@ Alla påståenden om Claude Code ska gå att kontrollera i den officiella dokume
 ## Status
 
 - Verifierat mot officiell dokumentation den 2026-11-17.
-- Lektion 0 och 1 är fullt utskrivna, var och en med tvåtimmars textgenomgång, labb och quiz.
-- Lektionerna 2 till 6 och avslutningen är dispositioner. De är inte utskrivna ännu.
+- Lektion 0 till 6 och den avslutande uppgiften är fullt utskrivna, enligt lektionsmallen.
+- Lektion 3, 4, 5 och 6 innehåller påståenden som inte är testade i en session. De är markerade i respektive lektion och i [sources.md](sources.md).
 - Inga slide-filer finns i repot ännu. Slide-outlines finns i varje lektion.
-- Ingen commit är gjord.
 
 ## Struktur
 
@@ -68,4 +67,12 @@ AI kurser/
     01-kontext/
       README.md              lektion 1, komplett
       quiz-facit.md          facit för instruktören
+    02-minne/                lektion 2, komplett (samma filer)
+    03-arbetsflode/          lektion 3, komplett (samma filer)
+    04-hooks-och-underagenter/  lektion 4, komplett (samma filer)
+    05-headless/             lektion 5, komplett (samma filer)
+    06-team-och-styrning/    lektion 6, komplett (samma filer)
+    A-slutuppgift/
+      README.md              avslutande uppgift
+      bedomningsmall.md      bedömning för instruktören
 ```
