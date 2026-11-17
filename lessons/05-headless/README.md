@@ -5,8 +5,9 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 till 4 är genomförda.
+- Claude Pro räcker för allt i lektionen, utom `claude --bare` i labbsteg 5. Dokumentationen säger att `--bare` inte läser din OAuth-inloggning, utan kräver `ANTHROPIC_API_KEY` med en nyckel från Claude Console. Har du ingen nyckel, gör steg 1 och 2 och hoppa över steg 3.
 - Ett .NET-repo med ett test-projekt.
 - Kunskap om att köra kommandon i en terminal och läsa exit codes.
 
@@ -219,7 +220,7 @@ Labbet görs i ett .NET-repo med ett test-projekt. Steg 3 och 5 kan ändra filer
 ### Steg 5: `--bare` och en okänd hook (20 min)
 1. Skapa en hook i kopians `.claude/settings.json` som skriver en rad till en fil, till exempel `echo hook-ran >> $env:TEMP\hook-check.txt`, med matchern `*`.
 2. Kör `claude -p "say hello"`. Öppna `hook-check.txt`.
-3. Ta bort filen, och kör `claude --bare -p "say hello"`. Kontrollera igen.
+3. Ta bort filen, och kör `claude --bare -p "say hello"`. Kontrollera igen. Kräver `ANTHROPIC_API_KEY`. Saknar du nyckel, hoppa över det här steget.
 
 **Förväntat:** utan `--bare` körs hooken, och filen skapas. Med `--bare` körs den inte. Det är därför `--bare` rekommenderas i CI.
 

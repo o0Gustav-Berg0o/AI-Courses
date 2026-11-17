@@ -5,9 +5,10 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 till 5 är genomförda.
 - Tillgång till ett repo som flera personer arbetar i, eller en kopia som simulerar det.
+- Claude Pro räcker för labben. Managed settings och managed CLAUDE.md distribueras av en administratör, och det finns bara på Team och Enterprise. På Pro simulerar labben det med användar- och projektnivå.
 
 ## Mål
 

@@ -5,7 +5,7 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 till 3 är genomförda.
 - Ett .NET-repo där du kan skapa filer i `.claude/` i en kopia eller på en separat gren.
 - Kunskap om JSON och PowerShell på en grundnivå.

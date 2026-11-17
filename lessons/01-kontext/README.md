@@ -5,7 +5,7 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 är genomförd: Claude Code är installerat, du är inloggad och har kört `claude`, `claude -p` och `claude -c`.
 - Ett .NET-repo som du kan läsa i. Labbet gör vissa ändringar, så det ska vara ett repo där du kan köra `git`.
 - Git for Windows installerat, eller WSL.

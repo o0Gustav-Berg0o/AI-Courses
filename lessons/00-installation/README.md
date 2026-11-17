@@ -5,8 +5,8 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
-- Ett konto som ger tillgång till Claude Code: Pro, Max, Ultra, Team, Enterprise, Claude Console, eller en molnleverantör som stöds.
+**Förkrav**
+- Ett Claude-konto med tillgång till Claude Code. Det kan vara ett abonnemang: Claude Pro, Max, Ultra, Team eller Enterprise. Det kan också vara Claude Console, där du betalar per användning med en API-nyckel, eller en molnleverantör som Amazon Bedrock, Google Cloud eller Microsoft Foundry. Claude Pro räcker för hela kursen. Lektion 5 har ett labbsteg som kräver en API-nyckel, och det står där.
 - Windows med PowerShell.
 - Git installerat. Git for Windows rekommenderas (se avsnittet Installation).
 - Ett .NET-repo som du kan läsa i men inte behöver ändra permanent.

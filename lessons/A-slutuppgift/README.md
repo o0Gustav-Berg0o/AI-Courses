@@ -6,7 +6,7 @@
 
 Den avslutande uppgiften har ingen quiz. Redovisningen och bedömningen ersätter den. Instruktören använder [bedömningsmallen](bedomningsmall.md).
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 till 6 är genomförda.
 - Ett .NET-repo där du kan skapa en ny funktion i en gren, och köra `dotnet build` och `dotnet test`.
 

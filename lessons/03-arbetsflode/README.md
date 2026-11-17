@@ -5,7 +5,7 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0, 1 och 2 är genomförda.
 - Ett .NET-repo med ett test-projekt som går att köra med `dotnet test`.
 - Labbet gör ändringar i kod, så gör det i en kopia eller på en separat gren.

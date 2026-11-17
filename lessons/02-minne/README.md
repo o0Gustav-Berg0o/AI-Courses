@@ -5,7 +5,7 @@
 - Labb: 1 timme 35 minuter.
 - Quiz och reflektion: 25 minuter.
 
-**Förkunskap**
+**Förkrav**
 - Lektion 0 och 1 är genomförda.
 - Ett .NET-repo där du kan skapa och ändra filer i en kopia eller på en separat gren.
 
